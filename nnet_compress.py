@@ -177,7 +177,7 @@ def main():
 
     # Report final compression ratio
     # ------------------------------------------------------------------------    
-    cmpr_ratio = N_EN * N_PHI * N_THETA * 10 * cdf_data.epoch.size
+    cmpr_ratio = N_EN * N_PHI * N_THETA * 16 * cdf_data.epoch.size
     cmpr_ratio /= (len(header_bytes) + len(latent_gzipped)) * 8
     
     print(f'Final compression ratio: {cmpr_ratio:.1f}X')
