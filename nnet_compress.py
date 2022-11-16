@@ -81,15 +81,16 @@ def main():
     # ------------------------------------------------------------------------
     header = bitstring.BitArray(uint=cdf_data.epoch.size, length=32)
 
-    means = np.zeros((cdf_data.epoch.size, N_EN // args.n_en_shells),
+    means = np.zeros((cdf_data.epoch.size, N_EN),
                      dtype=np.float16)
     
     for en_index in range(N_EN // args.n_en_shells):
         i = en_index * args.n_en_shells
         di = args.n_en_shells
-        means[:, en_index] = (
-            cdf_data.counts[:, :, :, i:i+di].mean(axis=(1, 2, 3))
-        )
+
+    for en_index in range(N_EN):
+        for j in range(cdf_data.epoch.size):
+            means[j, en_index] = cdf_data.counts[j, :, :, en_index].mean()
 
     header.append(bitstring.BitArray(bytes=means.tobytes()))
 

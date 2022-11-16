@@ -49,10 +49,10 @@ def main():
     ntimes_bytes = fh.read(4)                   # header
     ntimes = np.frombuffer(ntimes_bytes, dtype='>u4')[0]
 
-    means_bytes = ntimes * (N_EN // args.n_en_shells) * 2  # float16
+    means_bytes = ntimes * N_EN * 2  # float16
     means_bytes = fh.read(means_bytes)
     means = np.frombuffer(means_bytes, dtype=np.float16)
-    means = means.reshape((ntimes, N_EN // args.n_en_shells))
+    means = means.reshape((ntimes, N_EN))
     
     latent_bytes = gzip.decompress(fh.read())
 
@@ -133,18 +133,15 @@ def main():
 
     # Normalize to means
     # -----------------------------------------------------------------------
-    for en_index in range(N_EN // args.n_en_shells):
-        i = en_index * args.n_en_shells
-        di = args.n_en_shells
-
+    for en_index in range(N_EN):
         for j in range(ntimes):
             mean_orig = means[j, en_index]
-            mean_recon = counts[j, :, :, i:i+di].mean()
+            mean_recon = counts[j, :, :, en_index].mean()
 
             if mean_orig == 0:
-                counts[j, :, :, i:i+di] = 0
+                counts[j, :, :, en_index] = 0
             elif mean_recon > 0:                
-                counts[j, :, :, i:i+di] *= mean_orig / mean_recon
+                counts[j, :, :, en_index] *= mean_orig / mean_recon
     
     # Write counts to HDF5 file
     # ------------------------------------------------------------------------
