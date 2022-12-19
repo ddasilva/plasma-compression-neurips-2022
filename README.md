@@ -1,6 +1,8 @@
 # From Particles to Fluids: Dimensionality Reduction for Non-Maxwellian Plasma Velocity Distributions Validated in the Fluid Context
 
-This code accompanies the NeurIPS 2022 conference proceeding paper of the above title. It also accompanies a full-length version of that paper published later that year in *Frontiers* journal, titled "***The Impact of Dimensionality Reduction of Ion Counts Distributions on Preserving Moments with Applications to Data Compression***". It trains a learned, patch-based, dimensionality reductive method for  plasma ion counts distributions using data from the MMS satellite mission's FPI/DIS instrument. It requires data from MMS FPI/DIS, available for free online at the [MMS Science Data Center](https://lasp.colorado.edu/mms/sdc/public/).
+This code accompanies two papers: a short conference proceedings paper to the NeurIPS 2022 conference, and a full-length version of that paper published later that year in [Frontiers in Astronomy and Space Sciences](https://www.frontiersin.org/journals/astronomy-and-space-sciences). The title of the NeurIPS paper is above, while the full-length paper is titled  "***The Impact of Dimensionality Reduction of Ion Counts Distributions on Preserving Moments with Applications to Data Compression***".
+
+This code trains a learned, patch-based, dimensionality reductive method for  plasma ion counts distributions using data from the MMS satellite mission's FPI/DIS instrument. It requires data from MMS FPI/DIS, available for free online at the [MMS Science Data Center](https://lasp.colorado.edu/mms/sdc/public/).
 
 ## References
 * [da Silva, Daniel, and Christopher Bard. "From Particles to Fluids: Dimensionality Reduction for Non-Maxwellian Plasma Velocity Distributions Validated in the Fluid Context."](https://ml4physicalsciences.github.io/2022/files/NeurIPS_ML4PS_2022_73.pdf)
